@@ -1,2 +1,4 @@
 export const FETCH = 'FETCH_MESSAGES';
 export const SAVE = 'SAVE_MESSAGE';
+
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';

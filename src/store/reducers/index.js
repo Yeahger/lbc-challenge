@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import messagesReducers from './messages';
+import messages from './messages';
+import messagesFilter from './messagesFilter';
 
 const reducers = combineReducers({
-  messagesReducers,
+  messages,
+  messagesFilter,
 });
 
 export default reducers;
