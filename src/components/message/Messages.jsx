@@ -16,7 +16,7 @@ export default function Messages({ getMessages, dataReceived, messages } : Props
 
   return messages.length > 0 ? (
       messages.map(message => (
-        <Message type={message.type} text={message.text} key={message.id} />
+        <Message key={message.id} {...message} />
       ))
   ) : <div>Aucun message</div>;
 };
