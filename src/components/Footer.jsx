@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import GitHubLogo from '../assets/github.svg';
+import colors from '../utils/colors';
 
 export default function Footer() {
   return (
@@ -24,10 +25,10 @@ export default function Footer() {
 };
 
 const StyledFooter = styled.footer`
-  background-color: #474747;
+  background-color: ${colors.dark.gray};
   
   a {
-    color: #FFF;
+    color: ${colors.normal.white};
     &:hover {
       text-decoration: underline;
     }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import type { Message as MessageType } from '../../types/Message';
 import UserLogo from '../../assets/user.svg';
+import colors from '../../utils/colors';
 
 export default function Message({ type, username, text, date} : MessageType) {
   // Randomize user logo color
@@ -26,14 +27,14 @@ const StyledMessage = styled.div`
   margin-left: 60px;
   padding: 15px;
     
-  background-color: #FFF;
-  box-shadow: 1px 1px 8px 1px #E6EBEF;
+  background-color: ${colors.normal.white};
+  box-shadow: 1px 1px 8px 1px ${colors.shadow.light};
   border-radius: 5px;
 `;
 
 const Logo = styled.div`
   width: 50px;
-  background-color: #FFF;
+  background-color: ${colors.normal.white};
   
   fill: ${(props) => props.color};
   border: 2px solid ${(props) => props.color};
@@ -47,7 +48,7 @@ const UserName = styled.div`
   font-weight: bold;
 `;
 const Date = styled.div`
-  color: #B6B6B6;
+  color: ${colors.normal.gray};
   font-size: 12px;
   font-style: italic;
 `;

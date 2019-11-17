@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
+import colors from '../../utils/colors';
 
 export default function MessageForm() {
   return (
@@ -15,7 +16,7 @@ export default function MessageForm() {
         validate={values => {
           const errors = {};
           if (!values.text.trim()) {
-            errors.text = 'Le message ne doit pas être vide';
+            errors.text = 'Le message ne doit pas être vide.';
           }
           return errors;
         }}
@@ -60,18 +61,18 @@ const FormContainer = styled.div`
   margin: 20px 0;
   padding: 10px 20px;
   
-  background-color: #F4F6F7;
-  box-shadow: 1px 1px 8px 1px #E0E0E0;
+  background-color: ${colors.normal.gray2};
+  box-shadow: 1px 1px 8px 1px ${colors.shadow.dark};
   
 `;
 
 const Title = styled.h2`
   font-size: 20px;
-  color: #FF6E14;
+  color: ${colors.normal.orange};
 `;
 
 const StyledErrorMessage = styled.div`
-  color: #CC0000;
+  color: ${colors.normal.red};
 `;
 
 const BoldLabel = styled(Label)`
@@ -83,11 +84,11 @@ const LabelRadio = styled(Label)`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #FF6E14;
-  border: 1px solid #FF6E14;
+  background-color: ${colors.normal.orange};
+  border: 1px solid ${colors.normal.orange};
   
   &:hover, &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active {
-    background-color: #E05600;
-    border: 1px solid #E05600;
+    background-color: ${colors.dark.orange};
+    border: 1px solid ${colors.dark.orange};
   }
 `;
