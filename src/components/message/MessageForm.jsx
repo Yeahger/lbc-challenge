@@ -17,7 +17,7 @@ export default function MessageForm({ saveMessage }) {
         validate={values => {
           const errors = {};
           if (!values.text.trim()) {
-            errors.text = 'Le message ne doit pas être vide.';
+            errors.text = 'Votre message ne doit pas être vide.';
           }
           if (!values.username.trim()) {
             errors.username = 'Votre nom d\'utilisateur ne doit pas être vide.';

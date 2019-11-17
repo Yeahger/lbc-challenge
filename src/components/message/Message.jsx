@@ -56,7 +56,6 @@ const Logo = styled.div`
 const Visibility = styled.div`
   float: right;
   opacity: 0.15;
-  cursor: pointer;
 `;
 const UserName = styled.div`
   font-weight: bold;
