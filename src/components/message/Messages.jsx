@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import Message from '../message/Message';
 
 type Props = {
@@ -14,9 +15,13 @@ export default function Messages({ getMessages, dataReceived, messages } : Props
     }
   });
 
-  return messages.length > 0 ? (
-      messages.map(message => (
-        <Message key={message.id} {...message} />
-      ))
-  ) : <div>Aucun message</div>;
+  return (
+    <MessagesContainer>
+      { messages.length > 0 ? (messages.map(message => (<Message key={message.id} {...message} />))) : <div>Aucun message</div> }
+    </MessagesContainer>
+  );
 };
+
+const MessagesContainer = styled.div`
+  margin: 20px 0;
+`;

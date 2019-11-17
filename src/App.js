@@ -6,6 +6,8 @@ import configureStore from './store/configureStore';
 
 import Messages from './components/message/MessagesContainer';
 import Header from './components/Header';
+import Footer from './components/Footer';
+import MessageForm from './components/message/MessageForm';
 
 export default function App() {
   return (
@@ -14,7 +16,9 @@ export default function App() {
       <Container>
         <Title>Commentaires sur le produit "Chaussures de sécurité"</Title>
         <Messages />
+        <MessageForm />
       </Container>
+      <Footer />
     </Provider>
   );
 }

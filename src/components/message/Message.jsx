@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import type { Message as MessageType } from '../../types/Message';
 import UserLogo from '../../assets/user.svg';
 
-
 export default function Message({ type, username, text, date} : MessageType) {
   // Randomize user logo color
   const [logoColor] = useState('#' + Math.floor(Math.random()*16777215).toString(16));
