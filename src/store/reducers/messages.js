@@ -1,4 +1,4 @@
-import { FETCH } from '../constants/ActionTypes';
+import { FETCH, SAVE } from '../constants/ActionTypes';
 
 const initialState = {
   dataReceived: false,
@@ -10,9 +10,14 @@ export default function messages(state = initialState, action) {
     case FETCH:
       return {
         dataReceived: true,
-        messages: action.messages,
+        // This test is required to retrieve new messages because API does not exist
+        messages: state.messages.length > 0 ? state.messages : action.messages,
       };
-
+    case SAVE:
+      return {
+        dataReceived: false,
+        messages: [...state.messages, action.message],
+      };
     default:
       return state;
   }

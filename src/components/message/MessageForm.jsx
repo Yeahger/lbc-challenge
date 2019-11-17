@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
 import colors from '../../utils/colors';
 
-export default function MessageForm() {
+export default function MessageForm({ saveMessage }) {
   return (
     <FormContainer>
       <Title>Poster un commentaire</Title>
       <Formik
         initialValues={{
-          isPublic: "1",
+          isPublic: '1',
+          username: '',
           text: '',
         }}
         validate={values => {
@@ -18,11 +19,15 @@ export default function MessageForm() {
           if (!values.text.trim()) {
             errors.text = 'Le message ne doit pas être vide.';
           }
+          if (!values.username.trim()) {
+            errors.username = 'Votre nom d\'utilisateur ne doit pas être vide.';
+          }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log(JSON.stringify(values, null, 2));
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          saveMessage(values.isPublic, values.username, values.text);
           setSubmitting(false);
+          resetForm();
         }}
       >
         {({ isSubmitting, handleChange, values }) => (
@@ -40,6 +45,15 @@ export default function MessageForm() {
                 </LabelRadio>
               </FormGroup>
             </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <BoldLabel for="username">Nom d'utilisateur</BoldLabel>
+                  <Field as={Input} type="text" id="username" name="username" />
+                  <ErrorMessage name="username" component={StyledErrorMessage} />
+                </FormGroup>
+              </Col>
+            </Row>
             <FormGroup>
               <BoldLabel for="text">Message</BoldLabel>
               <Field as={Input} type="textarea" id="text" name="text" />

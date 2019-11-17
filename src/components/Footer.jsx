@@ -38,7 +38,7 @@ const StyledFooter = styled.footer`
 const StyledGitHubLogo = styled(GitHubLogo)`
   position: absolute;
   top: 4px;
-  left: -30px;
+  left: -2em;
 `;
 
 const StyledNavLink = styled(NavLink)`

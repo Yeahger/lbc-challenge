@@ -1,9 +1,8 @@
+import moment from 'moment';
 import * as types from '../constants/ActionTypes';
 
-export const getMessages = (value) => {
-
+export const getMessages = () => {
   // TODO: API getMessages call
-
   const messages = [
     {
       id: 1,
@@ -37,4 +36,19 @@ export const getMessages = (value) => {
     type: types.FETCH,
     messages,
   };
+};
+
+export const saveMessage = (isPublic, username, text) => {
+  // TODO: API saveMessages call
+
+  return {
+    type: types.SAVE,
+    message: {
+      id: Math.floor(Math.random() * 999999), // random ID just for this technical test
+      date: moment().format('DD/MM/YYYY'),
+      username,
+      text,
+      isPublic: isPublic === '1',
+    }
+  }
 };
