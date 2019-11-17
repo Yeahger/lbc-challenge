@@ -28,7 +28,7 @@ export const getMessages = (value) => {
       date: '02/10/2019',
       username: 'Chuck',
       text: 'Passable',
-      isPublic: true,
+      isPublic: false,
     },
 
   ];

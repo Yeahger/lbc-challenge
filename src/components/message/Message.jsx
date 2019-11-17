@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import type { Message as MessageType } from '../../types/Message';
 import UserLogo from '../../assets/user.svg';
+import publicLogo from '../../assets/icons/users.png';
+import privateLogo from '../../assets/icons/user-secret.png';
 import colors from '../../utils/colors';
 
-export default function Message({ type, username, text, date} : MessageType) {
+export default function Message({ isPublic, username, text, date} : MessageType) {
   // Randomize user logo color
   const [logoColor] = useState('#' + Math.floor(Math.random()*16777215).toString(16));
 
@@ -12,6 +14,13 @@ export default function Message({ type, username, text, date} : MessageType) {
     <MessageContainer>
       <Logo color={logoColor}><UserLogo /></Logo>
       <StyledMessage>
+        <Visibility>
+          <img
+            src={isPublic ? publicLogo : privateLogo }
+            title={isPublic ? "Public" : "Privé"}
+            alt="Visibilité"
+          />
+        </Visibility>
         <UserName>{username}</UserName>
         <Date>{date}</Date>
         <Text>{text}</Text>
@@ -44,6 +53,11 @@ const Logo = styled.div`
   overflow: hidden;
 `;
 
+const Visibility = styled.div`
+  float: right;
+  opacity: 0.15;
+  cursor: pointer;
+`;
 const UserName = styled.div`
   font-weight: bold;
 `;
