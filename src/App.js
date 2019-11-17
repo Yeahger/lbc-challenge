@@ -1,16 +1,19 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import Message from './components/Message';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+
+import Messages from './components/message/MessagesContainer';
 import Header from './components/Header';
 
 function App() {
   return (
-    <div>
+    <Provider store={configureStore()}>
       <Header />
       <Container>
-        <Message />
+        <Messages />
       </Container>
-    </div>
+    </Provider>
   );
 }
 
