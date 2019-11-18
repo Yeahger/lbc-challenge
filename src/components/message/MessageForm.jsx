@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
+import DismissingAlert from '../DismissingAlert';
 import colors from '../../utils/colors';
 
 export default function MessageForm({ saveMessage }) {
+  const [messageSent, setMessageSent] = useState(false);
+
   return (
     <FormContainer>
       <Title>Poster un commentaire</Title>
@@ -25,13 +28,17 @@ export default function MessageForm({ saveMessage }) {
           return errors;
         }}
         onSubmit={(values, { setSubmitting, resetForm }) => {
+          setMessageSent(true);
           saveMessage(values.isPublic, values.username, values.text);
           setSubmitting(false);
           resetForm();
+
+          console.log(messageSent);
         }}
       >
         {({ isSubmitting, handleChange, values }) => (
           <Form>
+            <DismissingAlert color="success" text="Message envoyé avec succès." isVisible={messageSent} handleDismiss={() => setMessageSent(false)} />
             <FormGroup>
               <BoldLabel>Visibilité</BoldLabel>
               <FormGroup check>
@@ -98,6 +105,7 @@ const LabelRadio = styled(Label)`
 `;
 
 const StyledButton = styled(Button)`
+  margin-bottom: 15px;
   background-color: ${colors.normal.orange};
   border: 1px solid ${colors.normal.orange};
   
